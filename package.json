@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@userfront/toolkit": "^1.0.9",
+    "react-login-page": "^1.0.4"
+  }
+}

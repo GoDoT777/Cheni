@@ -1,0 +1,168 @@
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 500;
+  color: rgba(15, 15, 15, 1);
+}
+
+.header {
+  font-family: "Teachers", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main .bg {
+  background: rgb(26, 79, 43);
+  height: 100vh;
+  width: 50vw;
+}
+main .sign-up {
+  width: 50vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 100px, 60px;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-size {
+  display: block; /* Change from flex to block */
+  width: 100%; /* Take full width of the parent */
+  max-width: 500px; /* Maximum width of the image */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Keep aspect ratio without cropping */
+  margin: 0 auto;
+  margin-top: 16rem; /* Center the image horizontally */
+}
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start; /* Align items vertically in the center */
+  justify-content: start; /* Start alignment (default) */
+}
+
+#logo-size {
+  position: fixed;
+  width: 3rem; /* Adjust the width as needed */
+  height: auto; /* This maintains the aspect ratio */
+}
+
+.logo {
+  position: fixed;
+  font-family: "Indie Flower", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2rem;
+  color: white;
+  margin-left: 47px; /* Add space between the image and the text */
+}
+
+#Chem {
+  font-family: "Indie Flower", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2rem;
+  color: white;
+  padding-top: 20px;
+}
+form input {
+  margin-bottom: 25px;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid rgba(15, 15, 15, 1);
+  padding: 4px 0px;
+  background: transparent;
+  color: rgba(15, 15, 15, 1);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 1;
+}
+
+#signi {
+  font-weight: 800;
+  font-size: 2rem;
+}
+
+form input::placeholder {
+  color: rgba(15, 15, 15, 1);
+  font-weight: 300;
+  font-size: 0.8rem;
+}
+
+form .btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.btn button {
+  width: 350px;
+  margin: 10px;
+  padding: 10px 35px;
+  background-color: rgb(26, 79, 43);
+  border: 1px solid rgb(16, 47, 26);
+  cursor: pointer;
+  color: white;
+}
+.signref {
+  display: flex;
+  justify-content: center;
+}
+
+.forg {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  font-weight: 400;
+  font-size: 0.85rem;
+}
+
+.same {
+  display: flex;
+  align-items: end;
+  padding-bottom: 5px;
+  font-weight: 500;
+}
+
+@media only screen and (max-width: 900px) {
+  main {
+    flex-direction: column;
+  }
+  main .bg {
+    height: 50vh;
+    width: 100vw;
+  }
+  .image-size {
+    padding: 0;
+    margin-top: 50px;
+    /* Center the image horizontally */
+  }
+  main .sign-up {
+    width: 100vw;
+    height: 50vh;
+  }
+}
