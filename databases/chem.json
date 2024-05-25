@@ -1,0 +1,12 @@
+{
+  "chems": [
+    {
+      "cas": "",
+      "name": "Admin123",
+      "amount": 34,
+      "value": "kg",
+      "price": "45",
+      "currency": "$"
+    }
+  ]
+}

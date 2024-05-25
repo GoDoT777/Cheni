@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import "./signin.css";
 
 export default function ChemSafe() {
@@ -6,7 +7,6 @@ export default function ChemSafe() {
     <div>
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="stylesheet" href="index.css" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       <link
@@ -24,15 +24,23 @@ export default function ChemSafe() {
       <main>
         <div className="bg">
           <div className="logo-container">
-            <img src="ico.png" id="logo-size" alt="Logo" />
+            <Image
+              src="/images/ico.png"
+              id="logo-size"
+              alt="Logo"
+              width={200000}
+              height={200000}
+            />
             <p id="Chem" className="logo">
               Chem.Safe
             </p>
           </div>
-          <img
-            src="chem/public/images/signleft.png"
+          <Image
+            src="/images/signleft.png"
             className="image-size"
             alt="Sign left"
+            width={1099000}
+            height={689}
           />
         </div>
 
