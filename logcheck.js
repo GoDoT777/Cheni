@@ -3,10 +3,6 @@ const fs = require("fs");
 const app = express();
 const port = 8080;
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
-
 app.use("/static", express.static("public"));
 
 // Existing route for getting a user by email
@@ -73,7 +69,16 @@ const email = "admin@gmail.com";
 const password = "Admin123";
 
 if (checkUserCredentials(email, password)) {
+  app.get("/", (req, res) => {
+    res.send("User found!");
+  });
+
   console.log("User found!");
 } else {
-  console.log("No user found with the given credentials.");
+  if (checkUserCredentials(email, password)) {
+    app.get("/", (req, res) => {
+      res.send("No user found with the given credentials.");
+    });
+    console.log("No user found with the given credentials.");
+  }
 }
