@@ -13,29 +13,33 @@ export default function ChemSafe() {
   const [si, setSi] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
+  const [data, setData] = useState([]); // Add a state to hold data
+
   const handleRedirect = (url) => {
     router.push(url);
   };
-  const handleSubmit = async (e: any, path: any) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(`/api/${path}`, {
+    const response = await fetch(`/api/storage`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ cas, name, amount, si }),
     });
+
     if (response.ok) {
-      const user = await response.json();
-      setUser(user);
+      const newItem = await response.json();
+      setData((prevData) => [...prevData, newItem]);
+      setCas("");
+      setName("");
+      setAmount("");
+      setSi("");
       setIsLoggedIn(true);
-      router.push("/main");
-      setTimeout(() => {
-        // Attempt to reload the page
-        window.location.reload();
-      }, 200);
     } else {
-      console.log(`${path} failed`);
+      console.log("storage failed");
     }
   };
+
   return (
     <div>
       <Head>
@@ -136,9 +140,19 @@ export default function ChemSafe() {
                 <option value="ml">ml</option>
               </select>
             </div>
-            <button type="submit" onClick={(e) => handleSubmit(e, "storage")}>
+            <button type="submit" onClick={(e) => handleSubmit(e)}>
               Submit
             </button>
+          </div>
+          <div className="display-data">
+            {data.map((item, index) => (
+              <div key={index} className="data-row">
+                <span>{item.cas}</span>
+                <span>{item.name}</span>
+                <span>{item.amount}</span>
+                <span>{item.si}</span>
+              </div>
+            ))}
           </div>
         </div>
       </nav>
