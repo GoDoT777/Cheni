@@ -1,71 +1,130 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
 import "./signin.css";
+import Profile from "./profile.jsx";
+import { useRouter } from "next/navigation";
 
 export default function ChemSafe() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
+  const router = useRouter();
+
+  const handleSubmit = async (e: any, path: any) => {
+    e.preventDefault();
+    const response = await fetch(`/api/${path}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+    if (response.ok) {
+      const user = await response.json();
+      setUser(user);
+      setIsLoggedIn(true);
+      router.push("/main");
+      setTimeout(() => {
+        // Attempt to reload the page
+        window.location.reload();
+      }, 200);
+    } else {
+      console.log(`${path} failed`);
+    }
+  };
   return (
     <div>
-      <meta charSet="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="stylesheet" href="signin.css" />
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap"
-        rel="stylesheet"
-      />
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Inter:wght@100..900&display=swap"
-        rel="stylesheet"
-      />
-      <title>ChemSafe</title>
+      <>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin=""
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap"
+          rel="stylesheet"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin=""
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Inter:wght@100..900&display=swap"
+          rel="stylesheet"
+        />
+        <title>ChemSafe</title>
 
-      <main>
-        <div className="bg">
-          <div className="logo-container">
+        <main>
+          <div className="bg">
+            <div className="logo-container">
+              <Image
+                src="/images/ico.png"
+                id="logo-size"
+                alt="Logo"
+                width={200000}
+                height={200000}
+              />
+              <p id="Chem" className="logo">
+                Chem.Safe
+              </p>
+            </div>
             <Image
-              src="/images/ico.png"
-              id="logo-size"
-              alt="Logo"
-              width={200000}
-              height={200000}
+              src="/images/signleft.png"
+              className="image-size"
+              alt="Sign left"
+              width={1099000}
+              height={689}
             />
-            <p id="Chem" className="logo">
-              Chem.Safe
-            </p>
           </div>
-          <Image
-            src="/images/signleft.png"
-            className="image-size"
-            alt="Sign left"
-            width={1099000}
-            height={689}
-          />
-        </div>
 
-        <div className="sign-up">
-          <div id="signi">Sign in</div>
-          <form action="#">
-            <div className="same">Email:</div>
-            <input type="text" placeholder="example@chem.safe" />
-            <div className="same">
-              Password:
-              <span className="forg">
-                <a href="#">Forgot Password?</a>
+          <div className="sign-up">
+            <div id="signi">Sign in</div>
+            <form>
+              <div className="same">Email:</div>
+              <input
+                type="email"
+                autoComplete="email"
+                placeholder="example@gmail.com"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <div className="same">
+                Password:
+                <span className="forg">
+                  <a href="#">Forgot Password?</a>
+                </span>
+              </div>
+              <input
+                placeholder="Example123"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <div className="btn">
+                <button type="submit" onClick={(e) => handleSubmit(e, "login")}>
+                  Sign in
+                </button>
+              </div>
+              <span className="signref">
+                Don't have an account?
+                <button
+                  id="signup"
+                  type="submit"
+                  onClick={(e) => handleSubmit(e, "signup")}
+                >
+                  Sign up
+                </button>
               </span>
-            </div>
-            <input type="password" placeholder="Qwerty123!" />
-            <div className="btn">
-              <button>Sign in</button>
-            </div>
-            <span className="signref">
-              Don't have an account? <a href="#"> Sign up</a>
-            </span>
-          </form>
-        </div>
-      </main>
+            </form>
+          </div>
+        </main>
+      </>
     </div>
   );
 }

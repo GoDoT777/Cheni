@@ -1,0 +1,65 @@
+/* Global styles */
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 500;
+  color: rgba(15, 15, 15, 1);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 70px;
+  font-family: "Teachers", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 70px;
+  font-weight: 600;
+}
+
+nav {
+  display: flex;
+
+  /* Center items vertically */
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 100vw;
+}
+
+.leftnav {
+  display: flex;
+  flex-direction: column;
+  min-width: 50px;
+  align-items: center;
+  background-color: rgb(224, 224, 224);
+  width: 10vh;
+  height: 100vh;
+}
+
+img {
+  width: 30px;
+  height: auto;
+}
+
+.leftnav:first-child {
+  padding-top: 150px;
+}
+
+.leftnav:nth-child() {
+  padding-bottom: 30px;
+}
+.icos {
+  background-color: transparent;
+  border: 0px solid transparent;
+  margin-bottom: 30px;
+  cursor: pointer;
+}

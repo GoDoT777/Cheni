@@ -2,11 +2,17 @@ const express = require("express");
 const fs = require("fs");
 const app = express();
 const port = 8080;
+const cors = require("cors");
+// Middleware
+app.use(cors()); // Enable CORS for all routes
+app.use(express.json()); // Middleware to parse JSON bodies
 
 app.use("/static", express.static("public"));
 
-// Existing route for getting a user by email
-app.get("/users/:email", (req, res) => {
+// Route for getting a user by email
+app.get("/users", (req, res) => {
+  console.log("sir");
+  const { email, password } = req.body; // Get email and password from request body
   const userFilePath = "./databases/users.json";
   fs.readFile(userFilePath, (err, data) => {
     if (err) {
@@ -15,11 +21,13 @@ app.get("/users/:email", (req, res) => {
     }
     try {
       const userData = JSON.parse(data);
-      const user = userData.users.find((u) => u.email === req.params.email);
+      const user = userData.users.find(
+        (u) => u.email === email && u.password === password
+      );
       if (!user) {
-        return res.send("<h1>User not found</h1>");
+        return res.status(404).send("User not found");
       }
-      res.send(`<h1>${user.email}</h1><p>${user.password}</p>`);
+      res.json({ message: "User authenticated", user });
     } catch (error) {
       console.error(error);
       res.status(500).send("Error parsing JSON.");
@@ -27,8 +35,9 @@ app.get("/users/:email", (req, res) => {
   });
 });
 
-// New route for getting all users
+// Route for getting all users
 app.get("/all-users", (req, res) => {
+  console.log("sir");
   const userFilePath = "./databases/users.json";
   fs.readFile(userFilePath, (err, data) => {
     if (err) {
@@ -37,7 +46,8 @@ app.get("/all-users", (req, res) => {
     }
     try {
       const userData = JSON.parse(data);
-      res.json(userData.users); // Send all users as JSON
+      res.json(userData.users);
+      console.log(userData.users); // Send all users as JSON
     } catch (error) {
       console.error(error);
       res.status(500).send("Error parsing JSON.");
@@ -69,16 +79,7 @@ const email = "admin@gmail.com";
 const password = "Admin123";
 
 if (checkUserCredentials(email, password)) {
-  app.get("/", (req, res) => {
-    res.send("User found!");
-  });
-
   console.log("User found!");
 } else {
-  if (checkUserCredentials(email, password)) {
-    app.get("/", (req, res) => {
-      res.send("No user found with the given credentials.");
-    });
-    console.log("No user found with the given credentials.");
-  }
+  console.log("User not found!");
 }
