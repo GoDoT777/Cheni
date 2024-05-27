@@ -1,4 +1,5 @@
 "use client";
+import { AuthProvider } from "../../../pages/api/authContext";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import "./mainp.css";
@@ -7,14 +8,13 @@ import { useRouter } from "next/navigation";
 
 export default function ChemSafe() {
   const router = useRouter(); // Moved above handleRedirect to fix scope issue
-  const handleRedirect = (url) => {
+  const handleRedirect = (url: any) => {
     router.push(url);
   };
   const [cas, setCas] = useState("");
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
   const [si, setSi] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
   const [data, setData] = useState([]); // New state to hold fetched data
   const [error, setError] = useState(null); // State to hold any fetch errors
@@ -42,17 +42,20 @@ export default function ChemSafe() {
     fetchData();
   }, []);
 
-  const renderDataRows = (data) => {
+  const renderDataRows = (data: any) => {
     if (!Array.isArray(data)) {
       return <div>Данные не являются массивом</div>;
     }
-
+    const handleDelete = async (itemId: any) => {
+      console.log("Logout");
+    };
     return data.map((item, index) => (
       <div key={index} className="data-row">
         <span>{item.cas}</span>
         <span>{item.name}</span>
         <span>{item.amount}</span>
         <span>{item.si}</span>
+        <button onClick={() => handleDelete(item.id)}>Delete</button>
       </div>
     ));
   };
@@ -87,6 +90,18 @@ export default function ChemSafe() {
         <div className="leftnav">
           <button
             className="icos"
+            id="profile"
+            onClick={() => handleRedirect("/profile")}
+          >
+            <Image
+              src="/images/profile.png"
+              width={200}
+              height={200}
+              alt="Profile"
+            />
+          </button>
+          <button
+            className="icos"
             id="main"
             onClick={() => handleRedirect("/main")}
           >
@@ -114,6 +129,20 @@ export default function ChemSafe() {
               width={200}
               height={200}
               alt="Add"
+            />
+          </button>
+          <button
+            className="icos"
+            id="logout"
+            onClick={() => {
+              handleRedirect("/signin");
+            }}
+          >
+            <Image
+              src="/images/logout.png"
+              width={200}
+              height={200}
+              alt="Logout"
             />
           </button>
         </div>

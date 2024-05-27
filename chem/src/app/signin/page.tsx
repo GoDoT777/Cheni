@@ -24,10 +24,6 @@ export default function ChemSafe() {
       setUser(user);
       setIsLoggedIn(true);
       router.push("/main");
-      setTimeout(() => {
-        // Attempt to reload the page
-        window.location.reload();
-      }, 200);
     } else {
       console.log(`${path} failed`);
     }

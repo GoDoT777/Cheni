@@ -2,9 +2,11 @@
   "dependencies": {
     "@userfront/toolkit": "^1.0.9",
     "bcrypt": "^5.1.1",
+    "cheerio": "^1.0.0-rc.12",
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "pg": "^8.11.5",
+    "puppeteer": "^22.10.0",
     "react-login-page": "^1.0.4"
   },
   "name": "chemsafe",

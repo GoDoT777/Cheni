@@ -4,7 +4,7 @@ const nextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: "http://localhost:8080/users/admin@gmail.com", // Adjust the destination URL according to your backend server
+        destination: "https://vddqfecxdyxrgwgcbwty.supabase.co", // Adjust the destination URL according to your backend server
       },
     ];
   },

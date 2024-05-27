@@ -1,45 +1,18 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import "./add.css";
+import "./mainp.css";
 import Head from "next/head";
 import { useRouter } from "next/navigation";
 
 export default function ChemSafe() {
-  const router = useRouter();
-  const [cas, setCas] = useState("");
-  const [name, setName] = useState("");
-  const [amount, setAmount] = useState("");
-  const [si, setSi] = useState("");
-  const [user, setUser] = useState(null);
-  const [data, setData] = useState([]);
-
+  const router = useRouter(); // Moved above handleRedirect to fix scope issue
   const handleRedirect = (url: any) => {
     router.push(url);
   };
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    const response = await fetch(`/api/storage`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ cas, name, amount, si }),
-    });
-
-    if (response.ok) {
-      const newItem = await response.json();
-      setData((prevData) => [...prevData, newItem]);
-      setCas("");
-      setName("");
-      setAmount("");
-      setSi("");
-    } else {
-      console.log("storage failed");
-    }
-  };
-
   return (
-    <div>
+    <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -123,61 +96,10 @@ export default function ChemSafe() {
           </button>
         </div>
         <div className="right">
-          <div className="header">Our list:</div>
-          <div className="items">
-            <input
-              id="inp"
-              type="text"
-              placeholder="Cas"
-              value={cas}
-              required
-              onChange={(e) => setCas(e.target.value)}
-            />
-            <input
-              id="name"
-              type="text"
-              placeholder="Name"
-              value={name}
-              required
-              onChange={(e) => setName(e.target.value)}
-            />
-            <input
-              id="amount"
-              type="number"
-              placeholder="Amount"
-              value={amount}
-              required
-              onChange={(e) => setAmount(e.target.value)}
-            />
-            <div className="custom-select">
-              <select
-                value={si}
-                required
-                onChange={(e) => setSi(e.target.value)}
-              >
-                <option value="0">Select SI:</option>
-                <option value="kg">kg</option>
-                <option value="g">g</option>
-                <option value="l">l</option>
-                <option value="ml">ml</option>
-              </select>
-            </div>
-            <button type="submit" onClick={(e) => handleSubmit(e)}>
-              Submit
-            </button>
-          </div>
-          <div className="display-data">
-            {data.map((item, index) => (
-              <div key={index} className="data-row">
-                <span>{item.cas}</span>
-                <span>{item.name}</span>
-                <span>{item.amount}</span>
-                <span>{item.si}</span>
-              </div>
-            ))}
-          </div>
+          <div className="header">Your profile:</div>
+          <div className="display-data"></div>
         </div>
       </nav>
-    </div>
+    </>
   );
 }
