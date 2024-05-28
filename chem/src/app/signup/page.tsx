@@ -91,12 +91,7 @@ export default function ChemSafe() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <div className="same">
-                Password:
-                <span className="forg">
-                  <a href="#">Forgot Password?</a>
-                </span>
-              </div>
+              <div className="same">Password:</div>
               <input
                 placeholder="Example123"
                 type="password"
