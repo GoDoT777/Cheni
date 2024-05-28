@@ -130,6 +130,9 @@ form .btn {
   padding-bottom: 5px;
   font-weight: 500;
 }
+.signup {
+  cursor: pointer;
+}
 
 @media only screen and (max-width: 900px) {
   main {

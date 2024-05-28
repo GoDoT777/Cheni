@@ -100,9 +100,9 @@ export default function ChemSafe() {
     }
     return data.map((item, index) => (
       <div key={index} className="data-row">
-        <span>{item.cas}</span>
-        <span>{item.name}</span>
-        <span>
+        <span className="pad">{item.cas}</span>
+        <span className="pad">{item.name}</span>
+        <span className="pad">
           {editingId === item.id ? (
             <input
               type="number"
@@ -114,7 +114,7 @@ export default function ChemSafe() {
             item.amount
           )}
         </span>
-        <span>{item.si}</span>
+        <span className="padr">{item.si}</span>
         <button onClick={() => handleDelete(item.id)}>Delete</button>
         {editingId === item.id ? (
           <button className="inside" onClick={() => handleSave(item.id)}>

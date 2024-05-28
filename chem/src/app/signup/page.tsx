@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import "./signin.css";
+import "./signup.css";
 import { useRouter } from "next/navigation";
 
 export default function ChemSafe() {
@@ -10,8 +10,8 @@ export default function ChemSafe() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
   const router = useRouter();
-  const handleSignup = () => {
-    router.push("/signup");
+  const handleSignIn = () => {
+    router.push("/signin");
   };
   const handleSubmit = async (e: any, path: any) => {
     e.preventDefault();
@@ -63,8 +63,8 @@ export default function ChemSafe() {
                 src="/images/ico.png"
                 id="logo-size"
                 alt="Logo"
-                width={200000}
-                height={200000}
+                width={2000}
+                height={2000}
               />
               <p id="Chem" className="logo">
                 Chem.Safe
@@ -80,7 +80,7 @@ export default function ChemSafe() {
           </div>
 
           <div className="sign-up">
-            <div id="signi">Sign in</div>
+            <div id="signi">Sign up</div>
             <form>
               <div className="same">Email:</div>
               <input
@@ -104,14 +104,17 @@ export default function ChemSafe() {
                 onChange={(e) => setPassword(e.target.value)}
               />
               <div className="btn">
-                <button type="submit" onClick={(e) => handleSubmit(e, "login")}>
-                  Sign in
+                <button
+                  type="submit"
+                  onClick={(e) => handleSubmit(e, "signup")}
+                >
+                  Sign up
                 </button>
               </div>
               <span className="signref">
-                Don't have an account?
-                <button id="signup" type="button" onClick={handleSignup}>
-                  Sign up
+                Already have an account?
+                <button id="signup" type="button" onClick={handleSignIn}>
+                  Sign in
                 </button>
               </span>
             </form>
