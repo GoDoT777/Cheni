@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import "./mainp.css";
+import "./prof.css";
 import Head from "next/head";
 import { useRouter } from "next/navigation";
 

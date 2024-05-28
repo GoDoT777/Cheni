@@ -7,7 +7,7 @@ import Head from "next/head";
 import { useRouter } from "next/navigation";
 
 export default function ChemSafe() {
-  const router = useRouter(); // Moved above handleRedirect to fix scope issue
+  const router = useRouter();
   const handleRedirect = (url: any) => {
     router.push(url);
   };
@@ -16,10 +16,10 @@ export default function ChemSafe() {
   const [amount, setAmount] = useState("");
   const [si, setSi] = useState("");
   const [user, setUser] = useState(null);
-  const [data, setData] = useState([]); // New state to hold fetched data
-  const [error, setError] = useState(null); // State to hold any fetch errors
-  const [editingId, setEditingId] = useState(null); // State to manage which item is being edited
-  const [editingAmount, setEditingAmount] = useState(""); // State to hold the new amount value
+  const [data, setData] = useState([]);
+  const [error, setError] = useState(null);
+  const [editingId, setEditingId] = useState(null);
+  const [editingAmount, setEditingAmount] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,7 +58,6 @@ export default function ChemSafe() {
         throw new Error("Failed to delete item");
       }
 
-      // Refresh the data after deletion
       setData(data.filter((item) => item.id !== itemId));
     } catch (error) {
       console.error("Error deleting item:", error);
@@ -84,7 +83,6 @@ export default function ChemSafe() {
         throw new Error("Failed to update item");
       }
 
-      // Refresh the data after updating
       setData(
         data.map((item) =>
           item.id === itemId ? { ...item, amount: editingAmount } : item
@@ -107,7 +105,8 @@ export default function ChemSafe() {
         <span>
           {editingId === item.id ? (
             <input
-              type="text"
+              type="number"
+              className="inside"
               value={editingAmount}
               onChange={(e) => setEditingAmount(e.target.value)}
             />
@@ -118,9 +117,16 @@ export default function ChemSafe() {
         <span>{item.si}</span>
         <button onClick={() => handleDelete(item.id)}>Delete</button>
         {editingId === item.id ? (
-          <button onClick={() => handleSave(item.id)}>Save</button>
+          <button className="inside" onClick={() => handleSave(item.id)}>
+            Save
+          </button>
         ) : (
-          <button onClick={() => handleEdit(item.id, item.amount)}>Edit</button>
+          <button
+            className="inside"
+            onClick={() => handleEdit(item.id, item.amount)}
+          >
+            Edit
+          </button>
         )}
       </div>
     ));
