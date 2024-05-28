@@ -95,7 +95,7 @@ export default function ChemSafe() {
           <button
             className="icos"
             id="buy"
-            onClick={() => handleRedirect("/BuyPage")}
+            onClick={() => handleRedirect("/buy")}
           >
             <Image src="/images/buy.png" width={200} height={200} alt="Buy" />
           </button>

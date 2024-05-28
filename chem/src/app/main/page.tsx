@@ -18,6 +18,8 @@ export default function ChemSafe() {
   const [user, setUser] = useState(null);
   const [data, setData] = useState([]); // New state to hold fetched data
   const [error, setError] = useState(null); // State to hold any fetch errors
+  const [editingId, setEditingId] = useState(null); // State to manage which item is being edited
+  const [editingAmount, setEditingAmount] = useState(""); // State to hold the new amount value
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,6 +43,7 @@ export default function ChemSafe() {
 
     fetchData();
   }, []);
+
   const handleDelete = async (itemId: any) => {
     try {
       const response = await fetch("/api/deleteItem", {
@@ -62,18 +65,63 @@ export default function ChemSafe() {
     }
   };
 
+  const handleEdit = (itemId: any, currentAmount: string) => {
+    setEditingId(itemId);
+    setEditingAmount(currentAmount);
+  };
+
+  const handleSave = async (itemId: any) => {
+    try {
+      const response = await fetch("/api/updateItem", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id: itemId, amount: editingAmount }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to update item");
+      }
+
+      // Refresh the data after updating
+      setData(
+        data.map((item) =>
+          item.id === itemId ? { ...item, amount: editingAmount } : item
+        )
+      );
+      setEditingId(null);
+    } catch (error) {
+      console.error("Error updating item:", error);
+    }
+  };
+
   const renderDataRows = (data: any) => {
     if (!Array.isArray(data)) {
       return <div>Данные не являются массивом</div>;
     }
-
     return data.map((item, index) => (
       <div key={index} className="data-row">
         <span>{item.cas}</span>
         <span>{item.name}</span>
-        <span>{item.amount}</span>
+        <span>
+          {editingId === item.id ? (
+            <input
+              type="text"
+              value={editingAmount}
+              onChange={(e) => setEditingAmount(e.target.value)}
+            />
+          ) : (
+            item.amount
+          )}
+        </span>
         <span>{item.si}</span>
         <button onClick={() => handleDelete(item.id)}>Delete</button>
+        {editingId === item.id ? (
+          <button onClick={() => handleSave(item.id)}>Save</button>
+        ) : (
+          <button onClick={() => handleEdit(item.id, item.amount)}>Edit</button>
+        )}
       </div>
     ));
   };
