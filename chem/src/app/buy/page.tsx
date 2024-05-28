@@ -1,22 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import Image from "next/image";
-import "./buy.css";
-import Head from "next/head";
 import { useRouter } from "next/navigation";
 import chemicalData from "../../../public/parcer/scraped_data.json";
-
-// const chemicalData = [
-//   {
-//     href: "https://www.spectrumchemical.com/chemical/organic-chemicals/biochemistry-chemicals/reagents-for-pharmacological-research/zolmitriptan-tci-z0024",
-//     text: "Zolmitriptan",
-//     casNumber: "139264-17-8",
-//     formula: "C16H21N3O2",
-//     itemNumber: "TCI-Z0024",
-//     cas: "139264-17-8",
-//     manufacturer: "TCI America",
-//   },
-// ];
+import LeftNav from "../../../components/LeftNav";
+import HeadContent from "../../../components/HeadContent";
+import "./buy.css";
 
 export default function ChemSafe() {
   const [searchValue, setSearchValue] = useState("");
@@ -27,6 +15,7 @@ export default function ChemSafe() {
   const handleRedirect = (url: any) => {
     router.push(url);
   };
+
   const handleSearch = () => {
     const result = chemicalData.find(
       (chemical) => chemical.casNumber === searchValue
@@ -42,88 +31,9 @@ export default function ChemSafe() {
 
   return (
     <div>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin=""
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap"
-          rel="stylesheet"
-        />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin=""
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Inter:wght@100..900&display=swap"
-          rel="stylesheet"
-        />
-        <title>Mainp</title>
-      </Head>
+      <HeadContent title="Buy" />
       <nav>
-        <div className="leftnav">
-          <button
-            className="icos"
-            id="profile"
-            onClick={() => handleRedirect("/profile")}
-          >
-            <Image
-              src="/images/profile.png"
-              width={200}
-              height={200}
-              alt="Profile"
-            />
-          </button>
-          <button
-            className="icos"
-            id="main"
-            onClick={() => handleRedirect("/main")}
-          >
-            <Image
-              src="/images/main-menu.png"
-              width={200}
-              height={200}
-              alt="Main Menu"
-            />
-          </button>
-          <button
-            className="icos"
-            id="buy"
-            onClick={() => handleRedirect("/buy")}
-          >
-            <Image src="/images/buy.png" width={200} height={200} alt="Buy" />
-          </button>
-          <button
-            className="icos"
-            id="add"
-            onClick={() => handleRedirect("/add")}
-          >
-            <Image
-              src="/images/circle.png"
-              width={200}
-              height={200}
-              alt="Add"
-            />
-          </button>
-          <button
-            className="icos"
-            id="logout"
-            onClick={() => handleRedirect("/signin")}
-          >
-            <Image
-              src="/images/logout.png"
-              width={200}
-              height={200}
-              alt="Logout"
-            />
-          </button>
-        </div>
+        <LeftNav /> {/* Use the LeftNav component here */}
         <div className="right">
           <div className="header">Our shop:</div>
           <div className="items">
@@ -171,7 +81,6 @@ export default function ChemSafe() {
             </div>
           </div>
         </div>
-        <div className="maint"></div>
       </nav>
     </div>
   );

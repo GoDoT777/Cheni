@@ -9,38 +9,11 @@ nav {
   width: 100vw;
 }
 
-.leftnav {
-  padding: 0px;
-  margin: 0px;
-  display: flex;
-  flex-direction: column;
-
-  align-items: center;
-  background-color: rgb(224, 224, 224);
-  border-right: 2px solid rgb(216, 216, 216);
-  width: 80px;
-  height: 100vh;
-}
-
 img {
   width: 30px;
   height: auto;
 }
 
-.leftnav:first-child {
-  padding-top: 150px;
-}
-
-#logout {
-  margin-top: auto;
-  margin-bottom: 30px;
-}
-.icos {
-  background-color: transparent;
-  border: 0px solid transparent;
-  margin-bottom: 30px;
-  cursor: pointer;
-}
 .pad {
   padding-left: 10px;
 }
