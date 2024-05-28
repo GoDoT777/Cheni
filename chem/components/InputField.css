@@ -1,0 +1,40 @@
+.input-field {
+  position: relative;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.5s;
+  font-family: "Roboto", sans-serif;
+  background-color: white;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+}
+
+.input-field::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  box-shadow: 0 0 0 3px rgba(108, 201, 153, 0.5);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.input-field::placeholder {
+  color: #999;
+}
+
+.input-field:focus {
+  border-color: #6c9;
+  background-color: white;
+  outline: none;
+}
+
+.input-field:focus::after {
+  opacity: 1;
+}

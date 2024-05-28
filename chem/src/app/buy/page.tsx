@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 import chemicalData from "../../../public/parcer/scraped_data.json";
 import LeftNav from "../../../components/LeftNav";
 import HeadContent from "../../../components/HeadContent";
+import InputField from "../../../components/InputField";
+import Nbutton from "../../../components/Nbutton";
 import "./buy.css";
 
 export default function ChemSafe() {
@@ -37,16 +39,25 @@ export default function ChemSafe() {
         <div className="right">
           <div className="header">Our shop:</div>
           <div className="items">
-            <input
-              id="search"
+            <InputField
+              id="smth"
+              placeholder="Enter Cas"
+              width="150px"
+              height="30px"
               type="text"
-              placeholder="Enter CAS number"
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
             />
-            <button id="searchButton" onClick={handleSearch}>
+
+            <Nbutton
+              id="smth"
+              onClick={handleSearch}
+              width="80px"
+              height="30px"
+            >
               Search
-            </button>
+            </Nbutton>
+
             <div className="result">
               {searchResult ? (
                 <div>

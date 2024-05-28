@@ -1,0 +1,39 @@
+/* Styles for the delete button */
+.button-delete {
+  position: relative;
+  padding: 5px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  background-color: white;
+  transition: background-color 0.1s;
+
+  /* Adjust color palette for delete button */
+  color: #ae3737; /* Red color for text */
+}
+
+.button-delete:hover {
+  background-color: #ffebee; /* Light red on hover */
+}
+
+.button-delete:focus {
+  outline: none;
+}
+
+.button-delete::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+  background-color: rgba(255, 90, 90, 0.5); /* Red color for shadow */
+  transition: background-color 0.3s;
+  pointer-events: none; /* Ensure clicks pass through to the button */
+}
+
+.button-delete:active::before {
+  background-color: rgba(255, 90, 90, 0.3); /* Lighter red when clicked */
+}

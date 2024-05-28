@@ -3,6 +3,10 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import LeftNav from "../../../components/LeftNav";
 import HeadContent from "../../../components/HeadContent";
+import InputField from "../../../components/InputField";
+import Nbutton from "../../../components/Nbutton";
+import Rbutton from "../../../components/Rbutton";
+import Gbutton from "../../../components/Gbutton";
 import "./mainp.css";
 
 export default function ChemSafe() {
@@ -99,9 +103,11 @@ export default function ChemSafe() {
         <span className="pad">{item.name}</span>
         <span className="pad">
           {editingId === item.id ? (
-            <input
+            <InputField
+              placeholder="Editing"
+              width="70px"
+              height="30px"
               type="number"
-              className="inside"
               value={editingAmount}
               onChange={(e) => setEditingAmount(e.target.value)}
             />
@@ -110,18 +116,30 @@ export default function ChemSafe() {
           )}
         </span>
         <span className="padr">{item.si}</span>
-        <button onClick={() => handleDelete(item.id)}>Delete</button>
+        <Rbutton
+          onClick={() => handleDelete(item.id)}
+          width="80px"
+          height="30px"
+        >
+          Delete
+        </Rbutton>
+
         {editingId === item.id ? (
-          <button className="inside" onClick={() => handleSave(item.id)}>
+          <Gbutton
+            onClick={() => handleSave(item.id)}
+            width="80px"
+            height="30px"
+          >
             Save
-          </button>
+          </Gbutton>
         ) : (
-          <button
-            className="inside"
+          <Nbutton
             onClick={() => handleEdit(item.id, item.amount)}
+            width="80px"
+            height="30px"
           >
             Edit
-          </button>
+          </Nbutton>
         )}
       </div>
     ));

@@ -2,7 +2,9 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import LeftNav from "../../../components/LeftNav";
-import HeadContent from "../../../components/HeadContent"; // Adjust the path as necessary
+import HeadContent from "../../../components/HeadContent";
+import InputField from "../../../components/InputField";
+import Gbutton from "../../../components/Gbutton";
 import "./add.css";
 
 export default function ChemSafe() {
@@ -46,44 +48,51 @@ export default function ChemSafe() {
           <div className="header">Our list:</div>
           <div className="items">
             <form onSubmit={handleSubmit}>
-              <input
-                id="inp"
-                type="text"
+              <InputField
+                id="smth"
                 placeholder="Cas"
+                width="300px"
+                height="30px"
                 value={cas}
                 required
                 onChange={(e) => setCas(e.target.value)}
               />
-              <input
-                id="name"
-                type="text"
+              <InputField
+                id="smth"
                 placeholder="Name"
+                width="300px"
+                height="30px"
                 value={name}
                 required
                 onChange={(e) => setName(e.target.value)}
               />
-              <input
-                id="amount"
-                type="number"
+              <InputField
+                id="smth"
                 placeholder="Amount"
+                type="number"
+                width="100px"
+                height="30px"
                 value={amount}
                 required
                 onChange={(e) => setAmount(e.target.value)}
               />
-              <div className="custom-select">
-                <select
-                  value={si}
-                  required
-                  onChange={(e) => setSi(e.target.value)}
-                >
-                  <option value="">Select SI:</option>
-                  <option value="kg">kg</option>
-                  <option value="g">g</option>
-                  <option value="l">l</option>
-                  <option value="ml">ml</option>
-                </select>
-              </div>
-              <button type="submit">Submit</button>
+
+              <select
+                id="smth"
+                value={si}
+                required
+                onChange={(e) => setSi(e.target.value)}
+              >
+                <option value="">Select SI:</option>
+                <option value="kg">kg</option>
+                <option value="g">g</option>
+                <option value="l">l</option>
+                <option value="ml">ml</option>
+              </select>
+
+              <Gbutton id="smth" type="submit" width="80px" height="30px">
+                Submit
+              </Gbutton>
             </form>
           </div>
           <div className="display-data">
