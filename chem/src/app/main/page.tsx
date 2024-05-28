@@ -41,14 +41,32 @@ export default function ChemSafe() {
 
     fetchData();
   }, []);
+  const handleDelete = async (itemId: any) => {
+    try {
+      const response = await fetch("/api/deleteItem", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id: itemId }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to delete item");
+      }
+
+      // Refresh the data after deletion
+      setData(data.filter((item) => item.id !== itemId));
+    } catch (error) {
+      console.error("Error deleting item:", error);
+    }
+  };
 
   const renderDataRows = (data: any) => {
     if (!Array.isArray(data)) {
       return <div>Данные не являются массивом</div>;
     }
-    const handleDelete = async (itemId: any) => {
-      console.log("Logout");
-    };
+
     return data.map((item, index) => (
       <div key={index} className="data-row">
         <span>{item.cas}</span>
@@ -149,8 +167,7 @@ export default function ChemSafe() {
         <div className="right">
           <div className="header">Our storage:</div>
           <div className="display-data">
-            {error ? <div>{error}</div> : renderDataRows(data)}{" "}
-            {/* Использование функции для отображения данных */}
+            {error ? <div>{error}</div> : renderDataRows(data)}
           </div>
         </div>
       </nav>
