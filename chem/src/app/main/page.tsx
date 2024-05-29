@@ -7,6 +7,7 @@ import InputField from "../../../components/InputField";
 import Nbutton from "../../../components/Nbutton";
 import Rbutton from "../../../components/Rbutton";
 import Gbutton from "../../../components/Gbutton";
+import { formatDate } from "../../../utils/FromDate";
 import "./mainp.css";
 
 export default function ChemSafe() {
@@ -19,8 +20,17 @@ export default function ChemSafe() {
   const [error, setError] = useState(null);
   const [editingId, setEditingId] = useState(null);
   const [editingAmount, setEditingAmount] = useState("");
+  const [dataa, setDataa] = useState([]);
+  const [currentDate, setCurrentDate] = useState("");
 
   useEffect(() => {
+    const dataa = new Date();
+    const day = String(dataa.getDate()).padStart(2, "0");
+    const month = String(dataa.getMonth() + 1).padStart(2, "0"); // Months are 0-indexed
+    const year = String(dataa.getFullYear()).slice(-2); // Get last two digits of the year
+    const formattedDate = `${day}/${month}/${year}`;
+    setCurrentDate(formattedDate);
+
     const fetchData = async () => {
       try {
         const response = await fetch("/api/mainy");
@@ -28,7 +38,6 @@ export default function ChemSafe() {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        console.log(typeof data); // Проверяем тип данных
         if (Array.isArray(data)) {
           setData(data);
         } else {
@@ -95,13 +104,13 @@ export default function ChemSafe() {
 
   const renderDataRows = (data) => {
     if (!Array.isArray(data)) {
-      return <div>Данные не являются массивом</div>;
+      return <div>Data is not an array</div>;
     }
     return data.map((item, index) => (
       <div key={index} className="data-row">
-        <span className="pad">{item.cas}</span>
-        <span className="pad">{item.name}</span>
-        <span className="pad">
+        <span>{item.name}</span>
+        <span>{item.cas}</span>
+        <span>
           {editingId === item.id ? (
             <InputField
               placeholder="Editing"
@@ -113,34 +122,37 @@ export default function ChemSafe() {
             />
           ) : (
             item.amount
-          )}
+          )}{" "}
+          {item.si}
         </span>
-        <span className="padr">{item.si}</span>
-        <Rbutton
-          onClick={() => handleDelete(item.id)}
-          width="80px"
-          height="30px"
-        >
-          Delete
-        </Rbutton>
+        <span>-</span>
+        <div className="buttons">
+          <Rbutton
+            onClick={() => handleDelete(item.id)}
+            width="80px"
+            height="30px"
+          >
+            Delete
+          </Rbutton>
 
-        {editingId === item.id ? (
-          <Gbutton
-            onClick={() => handleSave(item.id)}
-            width="80px"
-            height="30px"
-          >
-            Save
-          </Gbutton>
-        ) : (
-          <Nbutton
-            onClick={() => handleEdit(item.id, item.amount)}
-            width="80px"
-            height="30px"
-          >
-            Edit
-          </Nbutton>
-        )}
+          {editingId === item.id ? (
+            <Gbutton
+              onClick={() => handleSave(item.id)}
+              width="80px"
+              height="30px"
+            >
+              Save
+            </Gbutton>
+          ) : (
+            <Nbutton
+              onClick={() => handleEdit(item.id, item.amount)}
+              width="80px"
+              height="30px"
+            >
+              Edit
+            </Nbutton>
+          )}
+        </div>
       </div>
     ));
   };
@@ -151,7 +163,17 @@ export default function ChemSafe() {
       <nav>
         <LeftNav />
         <div className="right">
-          <div className="header">Our storage:</div>
+          <div className="header">
+            Chemical Storage <span className="date">({currentDate}) </span>
+          </div>
+          <div className="underline"></div>
+          <div className="table-header">
+            <span>Element Name</span>
+            <span>CAS Number</span>
+            <span>Quantity</span>
+            <span>Expiration Date</span>
+            <span>Actions</span>
+          </div>
           <div className="display-data">
             {error ? <div>{error}</div> : renderDataRows(data)}
           </div>

@@ -1,27 +1,29 @@
 /* components/LeftNav.css */
 .leftnav {
   display: flex;
-  position: static;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(224, 224, 224);
-  border-right: 2px solid rgb(216, 216, 216);
-  width: 80px;
-  height: 100vh;
+  background-color: #f0f0f0;
+  border-right: 2px solid #ececec;
+  width: 80px; /* Fixed width */
+  height: 100vh; /* Consider if vh affects zoom behavior */
+  min-width: 80px; /* Optional: Ensures it doesn't get too small */
+  max-width: 80px; /* Optional: Prevents it from getting too large */
+  margin-right: 40px;
 }
 
 .leftnav:first-child {
-  padding-top: 150px;
+  padding-top: 150px; /* Fixed padding */
 }
 
 #logout {
   margin-top: auto;
-  margin-bottom: 30px;
+  margin-bottom: 30px; /* Fixed margin */
 }
 
 .icos {
   background-color: transparent;
   border: 0px solid transparent;
-  margin-bottom: 30px;
+  margin-bottom: 30px; /* Fixed margin */
   cursor: pointer;
 }

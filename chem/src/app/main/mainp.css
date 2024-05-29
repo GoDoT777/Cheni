@@ -7,6 +7,64 @@ nav {
   flex-direction: column;
   background-color: white;
   width: 100vw;
+  position: relative;
+}
+
+.header {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 48px;
+  display: flex;
+  align-items: baseline;
+  line-height: 1;
+}
+
+.date {
+  font-size: 0.5em;
+  vertical-align: baseline;
+  line-height: 1;
+  margin-left: 15px;
+  font-weight: 400;
+  align-self: center;
+  margin-top: 4px;
+}
+
+.table-header {
+  width: 90%;
+  display: grid;
+  grid-template-columns: 25% 20% 15% 20% 20%; /* Adjust the percentages as needed */
+  padding: 10px 0;
+  margin: 10px 0;
+  font-weight: bold;
+  border-bottom: 2px solid rgb(238, 238, 238);
+}
+
+.display-data {
+  width: 90%;
+  display: grid;
+  grid-template-columns: 25% 20% 15% 20% 20%; /* Same percentages as the header */
+  row-gap: 10px;
+  padding: 10px 0;
+}
+.table-header span {
+  padding: 5px 10px;
+}
+
+.data-row {
+  display: contents;
+}
+
+.data-row span,
+.data-row .buttons {
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+}
+
+.data-row .buttons {
+  display: flex;
+  justify-content: flex-start;
 }
 
 img {
@@ -17,6 +75,7 @@ img {
 .pad {
   padding-left: 10px;
 }
+
 .padr {
   padding-left: 2px;
   padding-right: 10px;
