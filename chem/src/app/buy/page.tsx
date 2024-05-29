@@ -57,7 +57,7 @@ export default function ChemSafe() {
               {searchResult ? (
                 <div>
                   <p>
-                    <strong>Text:</strong> {searchResult.text}
+                    <strong>Name:</strong> {searchResult.text}
                   </p>
                   <p>
                     <strong>CAS Number:</strong> {searchResult.casNumber}
@@ -77,7 +77,7 @@ export default function ChemSafe() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      More Info
+                      More Info...
                     </a>
                   </p>
                 </div>
