@@ -1,5 +1,5 @@
 import React from "react";
-import "./Rbutton.css"; // Make sure to import your CSS file
+import "./Rbutton.css";
 
 const Rbutton = ({ children, width, height, ...props }) => {
   const buttonStyle = {

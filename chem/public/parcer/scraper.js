@@ -13,7 +13,6 @@ async function scrapeAllPages() {
       const { data } = await axios.get(url);
       const $ = cheerio.load(data);
 
-      // Check if there are any items on the current page
       const items = $(".product-item-info");
       console.log("Items found on page", page, ":", items.length);
       if (items.length === 0) {
@@ -22,9 +21,9 @@ async function scrapeAllPages() {
       }
 
       items.each((i, elem) => {
-        const href = $(elem).find(".product-item-link").attr("href"); // Extract href attribute
+        const href = $(elem).find(".product-item-link").attr("href");
         const text = $(elem).find(".product-item-name a").text().trim();
-        const casNumber = $(elem).find(".attr-value a").text().trim(); // Extract text from <a> tag within .attr-value
+        const casNumber = $(elem).find(".attr-value a").text().trim();
         const [formula, itemNumber, cas, manufacturer] = $(elem)
           .find(".attr-value")
           .map((i, el) => $(el).text().trim())
@@ -41,7 +40,6 @@ async function scrapeAllPages() {
       });
     }
 
-    // Write results to a JSON file
     const jsonContent = JSON.stringify(results, null, 2);
     fs.writeFileSync("scraped_data.json", jsonContent);
 

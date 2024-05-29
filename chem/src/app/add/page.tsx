@@ -43,13 +43,13 @@ export default function ChemSafe() {
     <div>
       <HeadContent title="Add new" />
       <nav>
-        <LeftNav /> {/* Use the LeftNav component here */}
+        <LeftNav />
         <div className="right">
           <div className="header">Our list:</div>
+          <div className="underline"></div>
           <div className="items">
             <form onSubmit={handleSubmit}>
               <InputField
-                id="smth"
                 placeholder="Cas"
                 width="300px"
                 height="30px"

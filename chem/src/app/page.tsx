@@ -9,5 +9,5 @@ export default function Home() {
     router.push("/signin");
   }, [router]);
 
-  return null; // This component will not render any UI
+  return null;
 }

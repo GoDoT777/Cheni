@@ -26,14 +26,15 @@
   background-color: rgb(238, 238, 238);
   border-radius: 5px;
   margin: 10px 0px;
+  margin-bottom: 30px;
 }
 
 p a {
-  color: #1b391b; /* Example link color */
+  color: #1b391b;
   text-decoration: none;
 }
 
 a:hover,
 a:focus {
-  color: #2d742f; /* Darker shade on hover/focus */
+  color: #2d742f;
 }

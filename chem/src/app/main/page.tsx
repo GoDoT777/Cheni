@@ -26,8 +26,8 @@ export default function ChemSafe() {
   useEffect(() => {
     const dataa = new Date();
     const day = String(dataa.getDate()).padStart(2, "0");
-    const month = String(dataa.getMonth() + 1).padStart(2, "0"); // Months are 0-indexed
-    const year = String(dataa.getFullYear()).slice(-2); // Get last two digits of the year
+    const month = String(dataa.getMonth() + 1).padStart(2, "0");
+    const year = String(dataa.getFullYear()).slice(-2);
     const formattedDate = `${day}/${month}/${year}`;
     setCurrentDate(formattedDate);
 

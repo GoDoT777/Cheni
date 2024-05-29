@@ -6,7 +6,6 @@ export default async function login(req, res) {
     const { email, password } = req.body;
 
     try {
-      // Get the user with the provided username
       const user = await pool.query("SELECT * FROM users WHERE email = $1", [
         email,
       ]);
@@ -18,12 +17,10 @@ export default async function login(req, res) {
         );
 
         if (passwordMatches) {
-          // Passwords match, return a success message
           res
             .status(200)
             .json({ status: "Success", message: "Login successful" });
         } else {
-          // Passwords don't match, return an error message
           res
             .status(403)
             .json({ status: "Error", message: "Invalid password" });

@@ -1,9 +1,8 @@
-// components/LeftNav.js
 "use client";
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import "./LeftNav.css"; // Assuming you have this CSS file
+import "./LeftNav.css";
 
 const LeftNav = () => {
   const router = useRouter();

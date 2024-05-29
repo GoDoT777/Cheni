@@ -30,25 +30,25 @@ main .sign-up {
 }
 
 .image-size {
-  display: block; /* Change from flex to block */
-  width: 100%; /* Take full width of the parent */
-  max-width: 500px; /* Maximum width of the image */
-  height: auto; /* Maintain aspect ratio */
-  object-fit: contain; /* Keep aspect ratio without cropping */
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  object-fit: contain;
   margin: 0 auto;
-  margin-top: 16rem; /* Center the image horizontally */
+  margin-top: 16rem;
 }
 .logo-container {
   display: flex;
   flex-direction: column;
-  align-items: start; /* Align items vertically in the center */
-  justify-content: start; /* Start alignment (default) */
+  align-items: start;
+  justify-content: start;
 }
 
 #logo-size {
   position: fixed;
-  width: 3rem; /* Adjust the width as needed */
-  height: auto; /* This maintains the aspect ratio */
+  width: 3rem;
+  height: auto;
 }
 
 .logo {
@@ -58,7 +58,7 @@ main .sign-up {
   font-style: normal;
   font-size: 2rem;
   color: white;
-  margin-left: 47px; /* Add space between the image and the text */
+  margin-left: 47px;
 }
 
 #Chem {

@@ -12,7 +12,7 @@
 }
 
 .button1:hover {
-  background-color: #f0f0f0; /* Light grey on hover */
+  background-color: #f0f0f0;
 }
 
 .button1:focus {
@@ -29,9 +29,9 @@
   border-radius: 3px;
   background-color: rgba(108, 201, 153, 0.5);
   transition: background-color 0.3s;
-  pointer-events: none; /* Ensure clicks pass through to the button */
+  pointer-events: none;
 }
 
 .button1:active::before {
-  background-color: rgba(108, 201, 153, 0.3); /* Lighter green when clicked */
+  background-color: rgba(108, 201, 153, 0.3);
 }

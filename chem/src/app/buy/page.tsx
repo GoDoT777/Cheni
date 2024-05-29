@@ -35,12 +35,12 @@ export default function ChemSafe() {
     <div>
       <HeadContent title="Buy" />
       <nav>
-        <LeftNav /> {/* Use the LeftNav component here */}
+        <LeftNav />
         <div className="right">
           <div className="header">Our shop:</div>
+          <div className="underline"></div>
           <div className="items">
             <InputField
-              id="smth"
               placeholder="Enter Cas"
               width="150px"
               height="30px"
@@ -49,12 +49,7 @@ export default function ChemSafe() {
               onChange={(e) => setSearchValue(e.target.value)}
             />
 
-            <Nbutton
-              id="smth"
-              onClick={handleSearch}
-              width="80px"
-              height="30px"
-            >
+            <Nbutton onClick={handleSearch} width="80px" height="30px">
               Search
             </Nbutton>
 

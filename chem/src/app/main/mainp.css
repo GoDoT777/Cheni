@@ -33,7 +33,7 @@ nav {
 .table-header {
   width: 90%;
   display: grid;
-  grid-template-columns: 25% 20% 15% 20% 20%; /* Adjust the percentages as needed */
+  grid-template-columns: 25% 20% 15% 20% 20%;
   padding: 10px 0;
   margin: 10px 0;
   font-weight: bold;
@@ -43,7 +43,7 @@ nav {
 .display-data {
   width: 90%;
   display: grid;
-  grid-template-columns: 25% 20% 15% 20% 20%; /* Same percentages as the header */
+  grid-template-columns: 25% 20% 15% 20% 20%;
   row-gap: 10px;
   padding: 10px 0;
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import "./InputField.css"; // Make sure to import your CSS file
+import "./InputField.css";
 
 const InputField = ({ placeholder, width, height, ...props }) => {
   return (
@@ -7,8 +7,8 @@ const InputField = ({ placeholder, width, height, ...props }) => {
       type="text"
       className="input-field"
       placeholder={placeholder}
-      style={{ width, height }} // Set the width and height dynamically using inline style
-      {...props} // Spread all other props
+      style={{ width, height }}
+      {...props}
     />
   );
 };

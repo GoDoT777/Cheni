@@ -15,6 +15,7 @@ export default function ChemSafe() {
         <LeftNav />
         <div className="right">
           <div className="header">Your profile:</div>
+          <div className="underline"></div>
           <div className="display-data"></div>
         </div>
       </nav>
