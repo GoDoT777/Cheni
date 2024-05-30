@@ -68,6 +68,7 @@ export default function ChemSafe() {
               />
               <InputField
                 id="smth"
+                min="0"
                 placeholder="Amount"
                 type="number"
                 width="100px"

@@ -56,7 +56,7 @@ export default function ChemSafe() {
         />
         <title>ChemSafe</title>
 
-        <main>
+        <main id="main">
           <div className="bg">
             <div className="logo-container">
               <Image
@@ -81,7 +81,7 @@ export default function ChemSafe() {
 
           <div className="sign-up">
             <div id="signi">Sign in</div>
-            <form>
+            <form id="form">
               <div className="same">Email:</div>
               <input
                 type="email"

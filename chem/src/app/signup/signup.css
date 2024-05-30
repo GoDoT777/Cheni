@@ -1,23 +1,23 @@
-body {
+/* body {
   width: 100%;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
-main {
+#main {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-main .bg {
+#main .bg {
   background: rgb(26, 79, 43);
   height: 100vh;
   width: 50vw;
 }
-main .sign-up {
+#main .sign-up {
   width: 50vw;
   height: 100vh;
   display: flex;
@@ -69,7 +69,7 @@ main .sign-up {
   color: white;
   padding-top: 20px;
 }
-form input {
+#form input {
   margin-bottom: 25px;
   width: 100%;
   border: none;
@@ -80,7 +80,7 @@ form input {
   color: rgba(15, 15, 15, 1);
 }
 
-form {
+#form {
   display: flex;
   flex-direction: column;
   flex-shrink: 1;
@@ -91,13 +91,13 @@ form {
   font-size: 2rem;
 }
 
-form input::placeholder {
+#form input::placeholder {
   color: rgba(15, 15, 15, 1);
   font-weight: 300;
   font-size: 0.8rem;
 }
 
-form .btn {
+#form .btn {
   display: flex;
   justify-content: center;
 }
@@ -135,10 +135,10 @@ form .btn {
 }
 
 @media only screen and (max-width: 900px) {
-  main {
+  #main {
     flex-direction: column;
   }
-  main .bg {
+  #main .bg {
     height: 50vh;
     width: 100vw;
   }
@@ -147,7 +147,7 @@ form .btn {
     margin-top: 50px;
     /* Center the image horizontally */
   }
-  main .sign-up {
+  #main .sign-up {
     width: 100vw;
     height: 50vh;
   }
