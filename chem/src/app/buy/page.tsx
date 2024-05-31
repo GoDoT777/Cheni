@@ -8,21 +8,47 @@ import InputField from "../../../components/InputField";
 import Nbutton from "../../../components/Nbutton";
 import "./buy.css";
 
+// Define the type for the chemical data item
+interface ChemicalItem {
+  href: string;
+  text: string;
+  casNumber: string;
+  formula: string;
+  itemNumber: string;
+  manufacturer?: string; // Manufacturer is optional based on the error message
+}
+
+// Type guard to check if an object is a ChemicalItem
+const isChemicalItem = (item: any): item is ChemicalItem => {
+  return (
+    typeof item.href === "string" &&
+    typeof item.text === "string" &&
+    typeof item.casNumber === "string" &&
+    typeof item.formula === "string" &&
+    typeof item.itemNumber === "string" &&
+    (typeof item.manufacturer === "string" || item.manufacturer === undefined)
+  );
+};
+
 export default function ChemSafe() {
   const [searchValue, setSearchValue] = useState("");
-  const [searchResult, setSearchResult] = useState(null);
+  const [searchResult, setSearchResult] = useState<ChemicalItem | null>(null);
   const [errorMessage, setErrorMessage] = useState("");
   const router = useRouter();
 
-  const handleRedirect = (url: any) => {
+  const handleRedirect = (url: string) => {
     router.push(url);
   };
 
   const handleSearch = () => {
-    const result = chemicalData.find(
-      (chemical) => chemical.casNumber === searchValue
-    );
-    if (result) {
+    const result = chemicalData.find((chemical) => {
+      if (isChemicalItem(chemical)) {
+        return chemical.casNumber === searchValue;
+      }
+      return false;
+    });
+
+    if (result && isChemicalItem(result)) {
       setSearchResult(result);
       setErrorMessage("");
     } else {
@@ -68,9 +94,11 @@ export default function ChemSafe() {
                   <p>
                     <strong>Item Number:</strong> {searchResult.itemNumber}
                   </p>
-                  <p>
-                    <strong>Manufacturer:</strong> {searchResult.manufacturer}
-                  </p>
+                  {searchResult.manufacturer && (
+                    <p>
+                      <strong>Manufacturer:</strong> {searchResult.manufacturer}
+                    </p>
+                  )}
                   <p>
                     <a
                       href={searchResult.href}

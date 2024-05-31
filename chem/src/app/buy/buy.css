@@ -17,9 +17,6 @@ img {
 .items {
   display: flex;
 }
-#smth {
-  margin: 20px;
-}
 
 .result {
   margin-left: 20px;

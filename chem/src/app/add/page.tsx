@@ -7,19 +7,26 @@ import InputField from "../../../components/InputField";
 import Gbutton from "../../../components/Gbutton";
 import "./add.css";
 
+interface DataItem {
+  cas: string;
+  name: string;
+  amount: number;
+  si: string;
+}
+
 export default function ChemSafe() {
   const router = useRouter();
   const [cas, setCas] = useState("");
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
   const [si, setSi] = useState("");
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<DataItem[]>([]);
 
-  const handleRedirect = (url: any) => {
+  const handleRedirect = (url: string) => {
     router.push(url);
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const response = await fetch(`/api/storage`, {
       method: "POST",
@@ -28,7 +35,7 @@ export default function ChemSafe() {
     });
 
     if (response.ok) {
-      const newItem = await response.json();
+      const newItem: DataItem = await response.json();
       setData((prevData) => [...prevData, newItem]);
       setCas("");
       setName("");
@@ -58,7 +65,6 @@ export default function ChemSafe() {
                 onChange={(e) => setCas(e.target.value)}
               />
               <InputField
-                id="smth"
                 placeholder="Name"
                 width="300px"
                 height="30px"
@@ -67,7 +73,6 @@ export default function ChemSafe() {
                 onChange={(e) => setName(e.target.value)}
               />
               <InputField
-                id="smth"
                 min="0"
                 placeholder="Amount"
                 type="number"
@@ -77,9 +82,7 @@ export default function ChemSafe() {
                 required
                 onChange={(e) => setAmount(e.target.value)}
               />
-
               <select
-                id="smth"
                 value={si}
                 required
                 onChange={(e) => setSi(e.target.value)}
@@ -91,7 +94,7 @@ export default function ChemSafe() {
                 <option value="ml">ml</option>
               </select>
 
-              <Gbutton id="smth" type="submit" width="80px" height="30px">
+              <Gbutton type="submit" width="80px" height="30px">
                 Submit
               </Gbutton>
             </form>

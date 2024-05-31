@@ -10,17 +10,25 @@ import Gbutton from "../../../components/Gbutton";
 import { formatDate } from "../../../utils/FromDate";
 import "./mainp.css";
 
+interface DataItem {
+  id: any;
+  cas: string;
+  name: string;
+  amount: any;
+  si: string;
+}
+
 export default function ChemSafe() {
   const [cas, setCas] = useState("");
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
   const [si, setSi] = useState("");
-  const [user, setUser] = useState(null);
-  const [data, setData] = useState([]);
-  const [error, setError] = useState(null);
-  const [editingId, setEditingId] = useState(null);
+  const [user, setUser] = useState<null | any>(null); // Adjust 'any' to the actual user type if known
+  const [data, setData] = useState<DataItem[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [editingId, setEditingId] = useState<string | null>(null);
   const [editingAmount, setEditingAmount] = useState("");
-  const [dataa, setDataa] = useState([]);
+  const [dataa, setDataa] = useState<DataItem[]>([]);
   const [currentDate, setCurrentDate] = useState("");
 
   useEffect(() => {
@@ -37,7 +45,7 @@ export default function ChemSafe() {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-        const data = await response.json();
+        const data: DataItem[] = await response.json();
         if (Array.isArray(data)) {
           setData(data);
         } else {
@@ -52,7 +60,7 @@ export default function ChemSafe() {
     fetchData();
   }, []);
 
-  const handleDelete = async (itemId) => {
+  const handleDelete = async (itemId: string) => {
     try {
       const response = await fetch("/api/deleteItem", {
         method: "DELETE",
@@ -72,12 +80,12 @@ export default function ChemSafe() {
     }
   };
 
-  const handleEdit = (itemId, currentAmount) => {
+  const handleEdit = (itemId: string, currentAmount: string) => {
     setEditingId(itemId);
     setEditingAmount(currentAmount);
   };
 
-  const handleSave = async (itemId) => {
+  const handleSave = async (itemId: string) => {
     try {
       const response = await fetch("/api/updateItem", {
         method: "PUT",
@@ -102,7 +110,7 @@ export default function ChemSafe() {
     }
   };
 
-  const renderDataRows = (data) => {
+  const renderDataRows = (data: DataItem[]) => {
     if (!Array.isArray(data)) {
       return <div>Data is not an array</div>;
     }
