@@ -62,7 +62,7 @@ export default function ChemSafe() {
                 height="30px"
                 value={cas}
                 required
-                onChange={(e) => setCas(e.target.value)}
+                onChange={(e: any) => setCas(e.target.value)}
               />
               <InputField
                 placeholder="Name"
@@ -70,7 +70,7 @@ export default function ChemSafe() {
                 height="30px"
                 value={name}
                 required
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e: any) => setName(e.target.value)}
               />
               <InputField
                 min="0"
@@ -80,7 +80,7 @@ export default function ChemSafe() {
                 height="30px"
                 value={amount}
                 required
-                onChange={(e) => setAmount(e.target.value)}
+                onChange={(e: any) => setAmount(e.target.value)}
               />
               <select
                 value={si}

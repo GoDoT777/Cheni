@@ -126,7 +126,7 @@ export default function ChemSafe() {
               height="30px"
               type="number"
               value={editingAmount}
-              onChange={(e) => setEditingAmount(e.target.value)}
+              onChange={(e: any) => setEditingAmount(e.target.value)}
             />
           ) : (
             item.amount
