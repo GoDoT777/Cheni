@@ -1,18 +1,18 @@
-"use client";
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
-import LeftNav from "../../../components/LeftNav";
-import HeadContent from "../../../components/HeadContent";
-import InputField from "../../../components/InputField";
-import Gbutton from "../../../components/Gbutton";
-import "./add.css";
+'use client';
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import LeftNav from '../../../components/LeftNav';
+import HeadContent from '../../../components/HeadContent';
+import InputField from '../../../components/InputField';
+import Gbutton from '../../../components/Gbutton';
+import './add.css';
 
 export default function ChemSafe() {
   const router = useRouter();
-  const [cas, setCas] = useState("");
-  const [name, setName] = useState("");
-  const [amount, setAmount] = useState("");
-  const [si, setSi] = useState("");
+  const [cas, setCas] = useState('');
+  const [name, setName] = useState('');
+  const [amount, setAmount] = useState('');
+  const [si, setSi] = useState('');
   const [data, setData] = useState([]);
 
   const handleRedirect = (url: any) => {
@@ -22,20 +22,20 @@ export default function ChemSafe() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const response = await fetch(`/api/storage`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ cas, name, amount, si }),
     });
 
     if (response.ok) {
       const newItem = await response.json();
       setData((prevData) => [...prevData, newItem]);
-      setCas("");
-      setName("");
-      setAmount("");
-      setSi("");
+      setCas('');
+      setName('');
+      setAmount('');
+      setSi('');
     } else {
-      console.log("storage failed");
+      console.log('storage failed');
     }
   };
 
@@ -79,6 +79,7 @@ export default function ChemSafe() {
 
               <select
                 id="smth"
+                className="selector"
                 value={si}
                 required
                 onChange={(e) => setSi(e.target.value)}

@@ -53,16 +53,16 @@ main .sign-up {
 
 .logo {
   position: fixed;
-  font-family: "Indie Flower", cursive;
+  font-family: 'Indie Flower', cursive;
   font-weight: 400;
   font-style: normal;
   font-size: 2rem;
   color: white;
-  margin-left: 47px;
+  margin-left: 47px; /* Add space between the image and the text */
 }
 
 #Chem {
-  font-family: "Indie Flower", cursive;
+  font-family: 'Indie Flower', cursive;
   font-weight: 400;
   font-style: normal;
   font-size: 2rem;
@@ -91,6 +91,10 @@ form {
   font-size: 2rem;
 }
 
+.signref button {
+  font-weight: 600;
+}
+
 form input::placeholder {
   color: rgba(15, 15, 15, 1);
   font-weight: 300;
@@ -110,17 +114,22 @@ form .btn {
   border: 1px solid rgb(16, 47, 26);
   cursor: pointer;
   color: white;
+  font-weight: 600;
 }
 .signref {
   display: flex;
   justify-content: center;
 }
 
+.signref button {
+  margin-left: 0.5rem;
+}
+
 .forg {
   display: flex;
   justify-content: end;
   width: 100%;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 0.85rem;
 }
 
@@ -129,9 +138,6 @@ form .btn {
   align-items: end;
   padding-bottom: 5px;
   font-weight: 500;
-}
-.signup {
-  cursor: pointer;
 }
 
 @media only screen and (max-width: 900px) {
