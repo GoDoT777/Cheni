@@ -17,6 +17,13 @@ img {
 .items {
   display: flex;
 }
+<<<<<<< HEAD
 /* #smth {
   margin: 20px;
 } */
+=======
+
+.result {
+  margin-left: 20px;
+}
+>>>>>>> 1f7223ddbea63b8050fb89925d760c26e3dc65e0

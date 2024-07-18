@@ -52,6 +52,7 @@ export default function ChemSafe() {
         />
       </div>
 
+<<<<<<< HEAD
       <div className="sign-up">
         <div id="signi">Sign up</div>
         <form>
@@ -85,5 +86,68 @@ export default function ChemSafe() {
         </form>
       </div>
     </main>
+=======
+        <main id="main">
+          <div className="bg">
+            <div className="logo-container">
+              <Image
+                src="/images/ico.png"
+                id="logo-size"
+                alt="Logo"
+                width={2000}
+                height={2000}
+              />
+              <p id="Chem" className="logo">
+                Chem.Safe
+              </p>
+            </div>
+            <Image
+              src="/images/signleft.png"
+              className="image-size"
+              alt="Sign left"
+              width={1099000}
+              height={689}
+            />
+          </div>
+
+          <div className="sign-up">
+            <div id="signi">Sign up</div>
+            <form id="form">
+              <div className="same">Email:</div>
+              <input
+                type="email"
+                autoComplete="email"
+                placeholder="example@gmail.com"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <div className="same">Password:</div>
+              <input
+                placeholder="Example123"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <div className="btn">
+                <button
+                  type="submit"
+                  onClick={(e) => handleSubmit(e, "signup")}
+                >
+                  Sign up
+                </button>
+              </div>
+              <span className="signref">
+                Already have an account?
+                <button id="signup" type="button" onClick={handleSignIn}>
+                  Sign in
+                </button>
+              </span>
+            </form>
+          </div>
+        </main>
+      </>
+    </div>
+>>>>>>> 1f7223ddbea63b8050fb89925d760c26e3dc65e0
   );
 }

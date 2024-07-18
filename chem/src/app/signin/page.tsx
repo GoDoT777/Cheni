@@ -52,6 +52,7 @@ export default function ChemSafe() {
         />
       </div>
 
+<<<<<<< HEAD
       <div className="sign-up">
         <h1 id="signi">Sign in</h1>
 
@@ -81,6 +82,67 @@ export default function ChemSafe() {
             <button type="submit" onClick={(e) => handleSubmit(e, 'login')}>
               Sign in
             </button>
+=======
+        <main id="main">
+          <div className="bg">
+            <div className="logo-container">
+              <Image
+                src="/images/ico.png"
+                id="logo-size"
+                alt="Logo"
+                width={200000}
+                height={200000}
+              />
+              <p id="Chem" className="logo">
+                Chem.Safe
+              </p>
+            </div>
+            <Image
+              src="/images/signleft.png"
+              className="image-size"
+              alt="Sign left"
+              width={1099000}
+              height={689}
+            />
+          </div>
+
+          <div className="sign-up">
+            <div id="signi">Sign in</div>
+            <form id="form">
+              <div className="same">Email:</div>
+              <input
+                type="email"
+                autoComplete="email"
+                placeholder="example@gmail.com"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <div className="same">
+                Password:
+                <span className="forg">
+                  <a href="#">Forgot Password?</a>
+                </span>
+              </div>
+              <input
+                placeholder="Example123"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <div className="btn">
+                <button type="submit" onClick={(e) => handleSubmit(e, "login")}>
+                  Sign in
+                </button>
+              </div>
+              <span className="signref">
+                Don't have an account?
+                <button id="signup" type="button" onClick={handleSignup}>
+                  Sign up
+                </button>
+              </span>
+            </form>
+>>>>>>> 1f7223ddbea63b8050fb89925d760c26e3dc65e0
           </div>
           <span className="signref">
             Don't have an account?
