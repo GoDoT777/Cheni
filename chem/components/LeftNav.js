@@ -1,8 +1,8 @@
-"use client";
-import React from "react";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import "./LeftNav.css";
+'use client';
+import React from 'react';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import './LeftNav.css';
 
 const LeftNav = () => {
   const router = useRouter();
@@ -13,36 +13,23 @@ const LeftNav = () => {
 
   return (
     <div className="leftnav">
-      <button
-        className="icos"
-        id="profile"
-        onClick={() => handleRedirect("/profile")}
-      >
+      <button className="icos" id="home" onClick={() => handleRedirect('/home')}>
+        <Image src="/images/home.png" width={30} height={30} alt="Add" />
+      </button>
+      <button className="icos" id="profile" onClick={() => handleRedirect('/profile')}>
         <Image src="/images/profile.png" width={30} height={30} alt="Profile" />
       </button>
-      <button
-        className="icos"
-        id="main"
-        onClick={() => handleRedirect("/main")}
-      >
-        <Image
-          src="/images/main-menu.png"
-          width={30}
-          height={30}
-          alt="Main Menu"
-        />
+      <button className="icos" id="main" onClick={() => handleRedirect('/main')}>
+        <Image src="/images/main-menu.png" width={30} height={30} alt="Main Menu" />
       </button>
-      <button className="icos" id="buy" onClick={() => handleRedirect("/buy")}>
+      <button className="icos" id="buy" onClick={() => handleRedirect('/buy')}>
         <Image src="/images/buy.png" width={30} height={30} alt="Buy" />
       </button>
-      <button className="icos" id="add" onClick={() => handleRedirect("/add")}>
+      <button className="icos" id="add" onClick={() => handleRedirect('/add')}>
         <Image src="/images/circle.png" width={30} height={30} alt="Add" />
       </button>
-      <button
-        className="icos"
-        id="logout"
-        onClick={() => handleRedirect("/signin")}
-      >
+
+      <button className="icos" id="logout" onClick={() => handleRedirect('/signin')}>
         <Image src="/images/logout.png" width={30} height={30} alt="Logout" />
       </button>
     </div>

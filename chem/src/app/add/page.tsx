@@ -1,11 +1,11 @@
-"use client";
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
-import LeftNav from "../../../components/LeftNav";
-import HeadContent from "../../../components/HeadContent";
-import InputField from "../../../components/InputField";
-import Gbutton from "../../../components/Gbutton";
-import "./add.css";
+'use client';
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import LeftNav from '../../../components/LeftNav';
+import HeadContent from '../../../components/HeadContent';
+import InputField from '../../../components/InputField';
+import Gbutton from '../../../components/Gbutton';
+import './add.css';
 
 interface DataItem {
   cas: string;
@@ -16,11 +16,19 @@ interface DataItem {
 
 export default function ChemSafe() {
   const router = useRouter();
+<<<<<<< HEAD
+  const [cas, setCas] = useState('');
+  const [name, setName] = useState('');
+  const [amount, setAmount] = useState('');
+  const [si, setSi] = useState('');
+  const [data, setData] = useState([]);
+=======
   const [cas, setCas] = useState("");
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
   const [si, setSi] = useState("");
   const [data, setData] = useState<DataItem[]>([]);
+>>>>>>> 1f7223ddbea63b8050fb89925d760c26e3dc65e0
 
   const handleRedirect = (url: string) => {
     router.push(url);
@@ -29,20 +37,20 @@ export default function ChemSafe() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const response = await fetch(`/api/storage`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ cas, name, amount, si }),
     });
 
     if (response.ok) {
       const newItem: DataItem = await response.json();
       setData((prevData) => [...prevData, newItem]);
-      setCas("");
-      setName("");
-      setAmount("");
-      setSi("");
+      setCas('');
+      setName('');
+      setAmount('');
+      setSi('');
     } else {
-      console.log("storage failed");
+      console.log('storage failed');
     }
   };
 
@@ -83,6 +91,11 @@ export default function ChemSafe() {
                 onChange={(e: any) => setAmount(e.target.value)}
               />
               <select
+<<<<<<< HEAD
+                id="smth"
+                className="selector"
+=======
+>>>>>>> 1f7223ddbea63b8050fb89925d760c26e3dc65e0
                 value={si}
                 required
                 onChange={(e) => setSi(e.target.value)}
